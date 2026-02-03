@@ -1,5 +1,6 @@
 #include "LogicSystem.h"
 #include"HttpConnection.h"
+#include"VerifyGrpcClient.h"
 bool LogicSystem::HandleGet(std::string path, std::shared_ptr<HttpConnection>con)
 {
 	if (_get_handlers.find(path) == _get_handlers.end()) {
@@ -56,6 +57,7 @@ LogicSystem::LogicSystem()
 		 
 		if (src_root.isMember("email")) {
 			auto email = src_root["email"].asString(); 
+			GetVarifyRsp rsp = VerifyGrpcClient::GetInstance()->GetVarifyCode(email);
 			std::cout << "return email is " << email << "\n";
 			root["error"] = 0;
 			root["email"] = src_root["email"]; 
