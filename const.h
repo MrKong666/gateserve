@@ -19,6 +19,7 @@
 #include<mutex>
 #include<thread>
 #include<condition_variable>
+#include"hiredis.h"
 //使用定义域简化代码
 namespace beast = boost::beast;         // from <boost/beast.hpp>
 namespace http = beast::http;           // from <boost/beast/http.hpp>
